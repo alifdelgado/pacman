@@ -247,8 +247,12 @@ const move = () => {
 
             if (keyz.ArrowRight) {
                 player.pos += 1;
+                g.eye.style.left = '20%';
+                g.mouth.style.left = '60%';
             } else if (keyz.ArrowLeft) {
                 player.pos -= 1;
+                g.eye.style.left = '60%';
+                g.mouth.style.left = '0%';
             } else if (keyz.ArrowUp) {
                 player.pos -= g.size;
             } else if (keyz.ArrowDown) {
@@ -279,6 +283,16 @@ const move = () => {
                 player.score += 10;
                 updateScore();
                 newPlace.t = 0;
+            }
+
+            if (newPlace != tempPos) {
+                if (player.tog) {
+                    g.mouth.style.height = '30%';
+                    player.tog = false;
+                } else {
+                    g.mouth.style.height = '10%';
+                    player.tog = true;
+                }
             }
 
             player.cool = player.speed;
